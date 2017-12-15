@@ -14,7 +14,8 @@ class Employees(Resource):
         conn = db_connect.connect() # connect to database
         query = conn.execute("select * from employees") # This line performs query and returns json result
         return {'employees': [i[0] for i in query.cursor.fetchall()]} # Fetches first column that is Employee ID
-    
+
+        
     def post(self):
         conn = db_connect.connect()
         print(request.json)
@@ -38,7 +39,7 @@ class Employees(Resource):
                              ReportsTo, BirthDate, HireDate, Address,
                              City, State, Country, PostalCode, Phone, Fax,
                              Email))
-        return {'status':'success'}
+        return {'status':'Employee inserted successfully'}
 
     
 class Tracks(Resource):
@@ -55,6 +56,11 @@ class Employees_Name(Resource):
         query = conn.execute("select * from employees where EmployeeId =%d "  %int(employee_id))
         result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
         return jsonify(result)
+
+    def delete(self, employee_id):
+        conn = db_connect.connect()
+        conn.execute("delete from employees where EmployeeId =%d "  %int(employee_id))
+        return {'status':'Employee deleted successfully'}
 
 
 api.add_resource(Employees, '/employees') # Route_1
