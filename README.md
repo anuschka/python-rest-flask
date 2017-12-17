@@ -4,18 +4,46 @@ This code is a self explanatory code, I got from [here](https://www.codementor.i
 
 The current repository helps in getting started with the basic REST API Development in Flask. The sole existence of this repo is for a [Powercoders lecture](http://powercoders.org/). The application uses [chinook.db](http://www.sqlitetutorial.net/sqlite-sample-database/) that students used in the SQL workshop.
 
-# Prerequisites
+## Prerequisites
++ a computer with Python installed
++ virtual environment (which is a copy of the Python interpreter onto which you can install packages privately, without affecting the global Python interpreter installed in your system)
 
-Python and virtual environment.
+### Virtual Environment
++ on Python 3: 
+```python
+python3 -m venv virtual-environment-name
+```
++ on Python 2:
+```python
+sudo pip install virtualenv
+```
++ to start using a virtual environment, you have to “activate” it:
+```python
+source venv/bin/activate
+```
 
-# Run the code
+## Run the code
 
 + Clone this repository.
-+ Install the requirements.
-+ Setup environment variables.
-+ Run Flask.
+```python
+git clone https://github.com/anuschka/python-rest-flask.git
+```
++ cd into python-rest-flask
++ Install the requirements
+```python
+pip install -r requirements.txt
+```
++ Setup environment variables
+```python
+FLASK_APP=app.py
+FLASK_DEBUG=True
+```
++ Run Flask
+```python
+flask run
+```
 
-# Test the code
+## Test the code
 There are three endpoints in the application:
 
 + http://127.0.0.1:5002/employees shows ids of all the employees in database
